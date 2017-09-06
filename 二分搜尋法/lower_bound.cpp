@@ -26,7 +26,5 @@ int* upper_bound(int* lb, int* ub, int v){
 int main(){
 	const int N = 10;
 	int d[N] = {1,1,2,2,2,3,3,4,5,6};
-	printf("%d\n", upper_bound(d, d+N, 1) - lower_bound(d, d+N, 1));
-	
 	return 0;
 }

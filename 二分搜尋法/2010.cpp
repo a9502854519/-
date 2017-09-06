@@ -1,3 +1,15 @@
+/* 將牛以分數排序，考慮一頭牛的成績x.score做為中位數，對於
+ * 成績小於等於x.score的牛群集合Cow1，盡可能地選取助學貸款
+ * 比較少的N/2頭牛；對於成績大於等於x.score的牛群集合Cow2
+ * 也比照辦理，得到總和sum2。計算結果分成以下三種情況
+ * (1) sum1 + sum2 + x.aid <= F
+ * (2) sum1 > sum2
+ * (3) otherwise
+ * 對於(1)，很合理地我們會繼續往上找更大的中位數。若(1)不
+ * 滿足並且滿足(2)
+ */
+
+
 #include<iostream>
 #include<algorithm>
 #include<cstdio>
@@ -8,14 +20,14 @@ using namespace std;
 struct Data{
 	int score;
 	int aid;
-	bool operator < (Data& other){
+	bool operator < (const Data& other) const{
 		return score < other.score;
 	}
 };
 struct Financial_Aid{
 	int aid;
 	int id;
-	bool operator < (Financial_Aid& other){
+	bool operator < (const Financial_Aid& other) const{
 		return aid < other.aid;
 	}
 };
@@ -35,7 +47,8 @@ bool D(int x){
 			count2++;
 		}
 	}
-
+	if(sum1+sum2+data[x].aid <= F || sum1 > sum2) return true;
+	return false;
 }
 int main(){
 	cin>>N>>C>>F;
