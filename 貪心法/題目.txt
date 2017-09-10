@@ -1,9 +1,0 @@
-UVa      10003 Cutting Sticks
-LeetCode 330   Patching Array
-LeetCode 435   Non-overlapping Intervals
-
-練習題
-POJ 2376
-POJ 1328
-POJ 2393
-POJ 1017
