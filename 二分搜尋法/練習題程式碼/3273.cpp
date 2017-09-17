@@ -1,3 +1,4 @@
+/* 這題如果還要題解，就太污辱你們的智商了...*/
 #include<iostream>
 #include<algorithm>
 #include<cstdio>
@@ -19,7 +20,7 @@ bool C(int limit){
 			if(sum > limit)
 				break;
 		}
-		if( --m == 0 && i <N-1){
+		if( --m == 0 && i < N-1){
 			return false;
 		}
 	}
