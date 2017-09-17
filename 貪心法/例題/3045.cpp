@@ -20,7 +20,7 @@ struct cow{
 	int s;
 	//重載運算子
 	//這部份應該會放在物件導向的部份(如果沒有，就把那本書拿去燒了)
-	bool operator < (cow& other){
+	bool operator < (const cow& other) const{
 		return w+s < other.w+other.s;
 	}
 };
