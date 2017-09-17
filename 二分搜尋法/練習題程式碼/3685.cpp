@@ -1,3 +1,6 @@
+/* 題目中的式子，整理一下，就會發現，對i遞增。
+ * 利用這個特性，二分吧。
+ */
 #include<iostream>
 #include<cmath>
 #include<cstdio>

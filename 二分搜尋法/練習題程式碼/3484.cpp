@@ -1,3 +1,9 @@
+/* 因為次數為奇數的只有一個。因此大於等於該數
+ * 字所有數字出現次數總和必為奇數，反之為偶數
+ * 利用這個性質，即可二分搜尋。
+ * 這題比較機車的是I/O，歐洲人出的題目通常都蠻
+ * 2266的...。
+ */
 #include<iostream>
 #include<vector>
 #include<cstdio>
@@ -21,7 +27,6 @@ bool C(long long int x){
 		left = max(v[i].x, lb+1);
 		right = min(v[i].y, x);
 		if(left <= right){
-			//printf("%lld %lld\n",left, right);
 			left = ceil(left - v[i].x, v[i].z);
 			right = (right - v[i].x)/v[i].z;
 			count += (right - left) + 1;

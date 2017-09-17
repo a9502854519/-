@@ -1,3 +1,4 @@
+/* 污辱智商的題目....*/
 class Solution {
 public:
 	vector<int> v;

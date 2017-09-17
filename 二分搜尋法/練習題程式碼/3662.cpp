@@ -1,3 +1,4 @@
+/* 這題會用到...圖的演算法，可以先不用理他*/
 #include<iostream>
 #include<queue>
 #include<algorithm>
