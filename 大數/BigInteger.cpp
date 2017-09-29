@@ -9,6 +9,8 @@
 (3)BignInteger + BigInteger
 除法明天再說
 減法...別逼我...
+P.S.我不太能保證乘法運算一定正確....至少我測不出問題，但我也沒
+測太多數據。會怕的就自己多測幾筆抓蟲吧
 */
 using namespace std;
 
@@ -60,9 +62,10 @@ struct BigInteger {
 			  if(i < s.size()){ 
 					x += s[i]*b.s[j];
 			  }
-			  if(i+j < c.s.size()) c.s[i+j] = x % BASE;
-			  else c.s.push_back(x % BASE);
-			  x /= BASE;
+			  if(i+j < c.s.size()) c.s[i+j] += x % BASE;
+			  else c.s.push_back(x % BASE); 
+			  x = x / BASE + c.s[i+j] / BASE;
+			  c.s[i+j] %= BASE;
 		  }
 	  }
 	  return c;
