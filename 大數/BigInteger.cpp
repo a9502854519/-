@@ -7,6 +7,7 @@
 (1)BigInteger * BigInteger
 (2)BigInteger * int (or long long)
 (3)BigInteger + BigInteger
+(3)BigInteger + int (or long long)
 (4)BigInteger / int (or long long)
 減法...別逼我...
 P.S.我不太能保證乘法/除法運算一定正確....至少我測不出問題，但我也沒
@@ -51,6 +52,10 @@ struct BigInteger {
       g = x / BASE;
     }
     return c;
+  }
+  BigInteger operator + (const long long& b) const{
+	  BigInteger c = b;
+	  return c + (*this);
   }
   BigInteger operator * (const BigInteger& b) const{
 	  BigInteger c;
