@@ -6,11 +6,11 @@
 目前可用的用法：
 (1)BigInteger * BigInteger
 (2)BigInteger * int (or long long)
-(3)BignInteger + BigInteger
-除法明天再說
+(3)BigInteger + BigInteger
+(4)BigInteger / int (or long long)
 減法...別逼我...
-P.S.我不太能保證乘法運算一定正確....至少我測不出問題，但我也沒
-測太多數據。會怕的就自己多測幾筆抓蟲吧
+P.S.我不太能保證乘法/除法運算一定正確....至少我測不出問題，但我也沒
+測太多數據。會怕的就自己多測幾筆抓蟲吧，有找到就告訴我。
 */
 using namespace std;
 
