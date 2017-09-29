@@ -6,11 +6,11 @@
 目前可用的用法：
 (1)BigInteger * BigInteger
 (2)BigInteger * int (or long long)
-(3)BignInteger + BigInteger
-除法明天再說
+(3)BigInteger + BigInteger
+(4)BigInteger / int (or long long)
 減法...別逼我...
-P.S.我不太能保證乘法運算一定正確....至少我測不出問題，但我也沒
-測太多數據。會怕的就自己多測幾筆抓蟲吧
+P.S.我不太能保證乘法/除法運算一定正確....至少我測不出問題，但我也沒
+測太多數據。會怕的就自己多測幾筆抓蟲吧，有找到就告訴我。
 */
 using namespace std;
 
@@ -74,21 +74,21 @@ struct BigInteger {
 	  BigInteger c = sum;
 	  return *this * c;
   }
- /* BigInteger operator / (const int& b) const{
-    BigInteger c;
-    c.s.clear();
-    vector<int> temp;
-    long long x = 0;
-    for(int i = s.size()-1; i >= 0; i--){
-	x = x * BASE + s[i];
-	temp.push_back(x / b);
-	x  = x % b;
-    }
-    for(int i = temp.size()-1; i >= 0; i--){
-	    c.s.push_back(temp[i]);
-    }
-    return c;
-  }*/
+  BigInteger operator / (const long long& b) const{
+	  BigInteger c;
+      c.s.clear();
+	  long long x = 0;
+	  vector<long long> temp;
+	  for(int i = s.size()-1; i >= 0; i--){
+		  x = x * BASE + s[i];
+		  if(x / b == 0 && temp.size() > 0 || x / b > 0)temp.push_back(x / b);
+		  x %= b;
+	  }
+	  for(int i = temp.size() -1 ; i >= 0; i--){
+		  c.s.push_back(temp[i]);
+	  }
+	  return c;
+  }
 	
 
 
@@ -113,9 +113,10 @@ istream& operator >> (istream &in, BigInteger& x) {
 }
 
 int  main(){
-    BigInteger A, i;
+    BigInteger A;
+	int i;
     while(cin>>A>>i){
-    	cout<<A*i<<endl;
+    	cout<<A/i<<endl;
     }
     return 0;
 }
