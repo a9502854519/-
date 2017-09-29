@@ -2,7 +2,14 @@
 #include<cstring>
 #include<vector>
 #include<iostream>
-
+/*
+目前可用的用法：
+(1)BigInteger * BigInteger
+(2)BigInteger * int (or long long)
+(3)BignInteger + BigInteger
+除法明天再說
+減法...別逼我...
+*/
 using namespace std;
 
 struct BigInteger {
