@@ -8,7 +8,7 @@ using namespace std;
 struct BigInteger {
   static const int BASE = 100000000;
   static const int WIDTH = 8;
-  vector<int> s;
+  vector<long long> s;
 
   BigInteger(long long num = 0) { *this = num; } // 构造函数
   BigInteger operator = (long long num) { // 赋值运算符
@@ -43,20 +43,28 @@ struct BigInteger {
     }
     return c;
   }
-  BigInteger operator * (const int& b) const{
-    BigInteger c;
-    c.s.clear();
-    long long x = 0;
-    for(int i = 0;;i++){
-	if(x == 0 && i >= s.size()) break;
-	x += s[i];
-    	x *= b;
-	c.s.push_back(x % BASE);
-	x /= BASE;
-    }
-    return c;
+  BigInteger operator * (const BigInteger& b) const{
+	  BigInteger c;
+	  c.s.resize(s.size(), 0);
+	  for(int j = 0; j < b.s.size(); j++){
+		  long long x = 0;
+		  for(int i = 0;; i++){
+			  if(x == 0 && i >= s.size()) break;
+			  if(i < s.size()){ 
+					x += s[i]*b.s[j];
+			  }
+			  if(i+j < c.s.size()) c.s[i+j] = x % BASE;
+			  else c.s.push_back(x % BASE);
+			  x /= BASE;
+		  }
+	  }
+	  return c;
   }
-  BigInteger operator / (const int& b) const{
+  BigInteger operator * (const long long& sum) const{
+	  BigInteger c = sum;
+	  return *this * c;
+  }
+ /* BigInteger operator / (const int& b) const{
     BigInteger c;
     c.s.clear();
     vector<int> temp;
@@ -70,7 +78,7 @@ struct BigInteger {
 	    c.s.push_back(temp[i]);
     }
     return c;
-  }
+  }*/
 	
 
 
@@ -95,8 +103,7 @@ istream& operator >> (istream &in, BigInteger& x) {
 }
 
 int  main(){
-    BigInteger A;
-    int i;
+    BigInteger A, i;
     while(cin>>A>>i){
     	cout<<A*i<<endl;
     }
