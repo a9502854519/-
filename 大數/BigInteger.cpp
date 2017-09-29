@@ -74,7 +74,7 @@ struct BigInteger {
 	  BigInteger c = sum;
 	  return *this * c;
   }
- /* BigInteger operator / (const int& b) const{
+  BigInteger operator / (const int& b) const{
     BigInteger c;
     c.s.clear();
     vector<int> temp;
@@ -88,7 +88,7 @@ struct BigInteger {
 	    c.s.push_back(temp[i]);
     }
     return c;
-  }*/
+  }
 	
 
 
