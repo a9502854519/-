@@ -9,12 +9,20 @@
 (3)BigInteger + BigInteger
 (3)BigInteger + int (or long long)
 (4)BigInteger / int (or long long)
-(5)BigInteger - BigInteger......自己做...我好懶
-
-
+(5)BigInteger % int (or long long)
+(6)BigInteger - BigInteger......自己做...我好懶
 P.S.我不太能保證乘法/除法運算一定正確....至少我測不出問題，但我也沒
 測太多數據。會怕的就自己多測幾筆抓蟲吧，有找到就告訴我。
+2017/9/30
+除法運算幾乎可確定正常。
+新增取模運算。
 */
+using namespace std;
+
+#include<cstdio>
+#include<cstring>
+#include<vector>
+#include<iostream>
 using namespace std;
 
 struct BigInteger {
@@ -66,11 +74,11 @@ struct BigInteger {
 		  long long x = 0;
 		  for(int i = 0;; i++){
 			  if(x == 0 && i >= s.size()) break;
-			  if(i < s.size()){ 
+			  if(i < s.size()){
 					x += s[i]*b.s[j];
 			  }
 			  if(i+j < c.s.size()) c.s[i+j] += x % BASE;
-			  else c.s.push_back(x % BASE); 
+			  else c.s.push_back(x % BASE);
 			  x = x / BASE + c.s[i+j] / BASE;
 			  c.s[i+j] %= BASE;
 		  }
@@ -96,9 +104,14 @@ struct BigInteger {
 	  }
 	  return c;
   }
-	
-
-
+  long long operator % (const long long& b) const{
+	  long long x = 0;
+	  for(int  i = s.size()-1; i >= 0; i--){
+		  x = x * BASE + s[i];
+		  x %= b;
+	  }
+	  return x;
+  }
 };
 
 ostream& operator << (ostream &out, const BigInteger& x) {
