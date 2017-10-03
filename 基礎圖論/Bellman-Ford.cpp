@@ -19,7 +19,7 @@ int d[MAX_E];
 int V, E //頂點數和邊數
 
 //從s出發到所有點的最短距離
-//回傳true代表有負環，false代表沒有
+//回傳true代表沒有負環，false代表有
 bool Bellman_Ford(int s){
 	for(int i = 0; i < V; i++) d[i] = INF;
 	d[s] = 0;
@@ -27,7 +27,7 @@ bool Bellman_Ford(int s){
 		for(int j = 0; j < E; j++){
 			edge e = E[j];
 			if(d[e.to] > d[e.from] + e.cost){
-				d[e.to = d[e.from] + e.cost;
+				d[e.to] = d[e.from] + e.cost;
 				if(i == V-1) return false;
 			}
 		}
