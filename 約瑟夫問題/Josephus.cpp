@@ -1,3 +1,9 @@
+/* Josephus Problem */
+/* 函數solve(int N, int K)會回傳Ｎ個人，每次砍第Ｋ個人時，編號多少
+ * 的人類會活下來。
+ * 不像k = 2有很漂亮的數學通解，k != 2的情況下沒有數學通解，只能用
+ * 遞迴慢慢解。時間複雜度大約為Klog(N)
+ */
 #include<iostream>
 #include<cstdio>
 
