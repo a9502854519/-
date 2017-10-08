@@ -21,5 +21,5 @@ int kruskal(){
 			res += e.cost;
 		}
 	}
-	return cost;
+	return res;
 }
