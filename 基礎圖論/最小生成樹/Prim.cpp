@@ -15,7 +15,7 @@ int prim(){
 	memset(used, false, sizeof(used));
 	priority_queue< P, vector<P>, greater<P> > que;
 	mincost[0] = 0;
-	que.push(P(0, 0));
+	que.push(P(0, 0)); //加入Ｑ集合中
 	int res = 0;
 	
 	while(!que.empty()){
