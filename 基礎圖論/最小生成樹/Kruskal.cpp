@@ -12,7 +12,7 @@ int V, E;
 
 int kruskal(){
 	sort(es, es+E, comp);
-	init_union_find(V)    //集合初始化
+	init_union_find(V);    //集合初始化
 	int res = 0;
 	for(int i = 0; i < E; i++){
 		edge e = es[i];
