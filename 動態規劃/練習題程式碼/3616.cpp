@@ -34,10 +34,8 @@ void solve(){
 		dp[i] = Fj[i].eff;
 		Farmer_John* j = upper_bound(Fj, Fj + M, Fj[i].start, ub_cmp);
 		
-		for(; j - Fj >= 0; j--){
-			if(j->end <= Fj[i].start){
-				dp[i] = max(dp[i], dp[j - Fj] + Fj[i].eff);
-			}
+		for(j = j - 1; j - Fj >= 0; j--){
+			dp[i] = max(dp[i], dp[j - Fj] + Fj[i].eff);
 		}
 		res = max(res,dp[i]);
 	}
