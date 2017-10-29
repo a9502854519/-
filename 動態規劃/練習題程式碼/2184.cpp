@@ -1,11 +1,11 @@
 /* 題目要求TS和TF最大，而且不能為負
-　* 也就是說，如果把TS和TF放在一起計
-　* 算，就無法保證兩個都一定　>= 0了
-　* 所以要把其中一個提出來
+ * 也就是說，如果把TS和TF放在一起計
+ * 算，就無法保證兩個都一定　>= 0了
+ * 所以要把其中一個提出來
  * dp[i][j]  前i個Si總和為j時最大的Fi之和
  * dp[i][j] = max(dp[i-1][j], dp[i-1][j-T[i].first] + T[i].second)
  * 這次因為j有可能是負的，所以要平移
-　* 座標，這裡定義j的原點為100000
+ * 座標，這裡定義j的原點為100000
  */
 
 #include<iostream>
@@ -38,7 +38,7 @@ void solve(){
 		}
 	}
 	res = 0;
-	for(int j=0; j<=100000; j++){
+	for(int j = 0; j <= 100000; j++){
 		if(dp[j + ORIGIN] >= 0){
 			res = max(res, dp[j + ORIGIN] + j);
 		}
@@ -49,7 +49,7 @@ int main(){
 	int N,res,temp;
 
 	cin>>N;
-	for(int i=1;i<=N;i++){
+	for(int i = 1; i <= N; i++){
 		cin>>T[i].first>>T[i].second;
 	}	
 	solve();

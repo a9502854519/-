@@ -1,11 +1,8 @@
-#include<iostream>
 /* 沒有個數限制的背包問題 */
 /* 這題用C++提交可能會超時
  * 請改用G++
  */
-
-
-
+#include<iostream>
 #include<cstring>
 #define MAX_N 1000000
 
