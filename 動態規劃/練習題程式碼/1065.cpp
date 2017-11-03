@@ -11,22 +11,21 @@
 using namespace std;
 
 pair<int, int> WS[MAX_N];
-int dp[MAX_N];
+bool dp[MAX_N]; //dp[i] --> 代表第i個是否已經被加入某個LIS中
 int m;
 
 void solve(){
 	sort(WS,WS+m);
 	memset(dp, 0, sizeof(dp));
 	int ans = 0;
-	for(int i=0 ; i < m ;i++){
-		if(!dp[i]){
+	for(int i = 0; i < m ;i++){
+		if(!dp[i]){//如果還沒被加入任何LIS中
 			int last = WS[i].second;
 			ans++; 
-			for(int j = i+1; j < m; j++){
+			for(int j = i + 1; j < m; j++){
 				if(!dp[j] && WS[j].second >= last){
 					last = WS[j].second;
-					dp[j] = 1;
-						
+					dp[j] = true;
 				}
 			}
 		}

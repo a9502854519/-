@@ -13,16 +13,16 @@ using namespace std;
 int dp[MAX_P];
 
 int main(){
-	int n,p,max,a;
+	int n, p, max, a;
 	cin>>n;
-	for(int t=0; t<n;t++){
-		scanf("%d",&p);
-		fill(dp,dp+p,INF);
-		for(int i=0;i<p;i++) {
-			scanf("%d",&a); 
-			*lower_bound(dp,dp+p,a) = a;
+	for(int t = 0; t < n; t++){
+		scanf("%d", &p);
+		fill(dp, dp + p, INF);
+		for(int i = 0; i < p; i++) {
+			scanf("%d", &a); 
+			*lower_bound(dp, dp + p, a) = a;
 		}
-		cout<<lower_bound(dp,dp+p,INF)-dp<<endl;
+		cout<<lower_bound(dp, dp + p, INF) - dp<<endl;
 	}
 	return 0;
 }

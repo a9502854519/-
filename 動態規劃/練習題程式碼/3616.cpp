@@ -33,7 +33,7 @@ void solve(){
 	for(int i = 1; i < M; i++){
 		dp[i] = Fj[i].eff;
 		Farmer_John* j = upper_bound(Fj, Fj + M, Fj[i].start, ub_cmp);
-		
+		//用二分搜尋法加快計算效率
 		for(j = j - 1; j - Fj >= 0; j--){
 			dp[i] = max(dp[i], dp[j - Fj] + Fj[i].eff);
 		}
