@@ -58,7 +58,6 @@ int bfs(int s){
 				if(ok && (v == NUM(a, b) || relax(level[a][b], t))) que.push(P(NUM(a, b), t + 1));	
 			}
 		}
-		//不動的情況要提出來特別處理
 	}	
 }
 void solve(){
