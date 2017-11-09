@@ -49,7 +49,8 @@ void bfs(int s){
 
 		for(int k = 0; k < 4; k++){
 			int a = i + x[k], b = j + y[k];
-			if(a >= 0 && a < R && b >= 0 && b < C && d[a][b] != ' '){//確認是否可以走
+			if(a >= 0 && a < R && b >= 0 && b < C
+			    && d[a][b] == 'X' || d[a][b] == '.' || d[a][b] == 'O'){//確認是否可以走
 				bool ok = false;
 				if((a + 1) & 1) ok = check(a, b, -t, -t-1);
 				else 		ok = check(a, b, t, t + 1);
