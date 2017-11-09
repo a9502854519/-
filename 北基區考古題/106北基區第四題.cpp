@@ -15,7 +15,7 @@ using namespace std;
 typedef pair<int, int> P;
 
 int R, C;
-char d[MAX_R][MAX_C];
+char d[MAX_R][MAX_C+1];
 int level[MAX_R][MAX_C];
 
 int x[] = {1, -1, 0, 0};
@@ -23,8 +23,8 @@ int y[] = {0, 0, 1, -1};
 
 bool check(int a, int b, int t1, int t2){
 	bool ok = true;
-	if(b + t1 >= 0 && b + t1 < R && d[a][b + t1] == 'X') ok = false;
-	if(b + t2 >= 0 && b + t2 < R && d[a][b + t2] == 'X') ok = false;
+	if(b + t1 >= 0 && b + t1 < C && d[a][b + t1] == 'X') ok = false;
+	if(b + t2 >= 0 && b + t2 < C && d[a][b + t2] == 'X') ok = false;
 	return ok;	
 }
 bool relax(int& u, int t){
@@ -65,9 +65,11 @@ void bfs(int s){
 void solve(){
 	int s;
 	for(int i = 0; i < R; i++){
+		cout<<d[i];
 		for(int j = 0; j < C; j++){
 			if(d[i][j] == 'O') s = NUM(i, j);
 		}
+		printf("\n");
 	}
 	bfs(s);
 	for(int i = 0; i < R; i++){
