@@ -18,8 +18,8 @@ int R, C;
 char d[MAX_R][MAX_C+1];
 int level[MAX_R][MAX_C];
 
-int x[] = {1, -1, 0, 0};
-int y[] = {0, 0, 1, -1};
+int x[] = {1, -1, 0, 0, 0};
+int y[] = {0, 0, 1, -1, 0};
 
 bool check(int a, int b, int t1, int t2){
 	bool ok = true;
@@ -48,20 +48,17 @@ int bfs(int s){
 		
 		if(i == 0) return v;
 
-		for(int k = 0; k < 4; k++){
+		for(int k = 0; k < 5; k++){
 			int a = i + x[k], b = j + y[k];
 			if(a >= 0 && a < R && b >= 0 && b < C
 			    && (d[a][b] == 'X' || d[a][b] == '.' || d[a][b] == 'O')){//確認是否可以走
 				bool ok = false;
 				if((a + 1) & 1) ok = check(a, b, -t, -t-1);
 				else 		ok = check(a, b, t, t + 1);
-				if(ok && relax(level[a][b], t)) que.push(P(NUM(a, b), t + 1));	
+				if(ok && (v == NUM(a, b) || relax(level[a][b], t))) que.push(P(NUM(a, b), t + 1));	
 			}
 		}
 		//不動的情況要提出來特別處理
-		if(check(i, j, t, t + 1)){
-			que.push(P(NUM(i, j), t + 1));
-		}
 	}	
 }
 void solve(){
