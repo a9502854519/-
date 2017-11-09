@@ -53,7 +53,7 @@ int bfs(int s){
 			if(a >= 0 && a < R && b >= 0 && b < C
 			    && (d[a][b] == 'X' || d[a][b] == '.' || d[a][b] == 'O')){//確認是否可以走
 				bool ok = false;
-				if((a + 1) & 1) ok = check(a, b, -t, -t-1);
+				if(a & 1) ok = check(a, b, -t, -t-1);
 				else 		ok = check(a, b, t, t + 1);
 				if(ok && (v == NUM(a, b) || relax(level[a][b], t))) que.push(P(NUM(a, b), t + 1));	
 			}
