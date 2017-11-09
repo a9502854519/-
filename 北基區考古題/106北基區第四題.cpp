@@ -34,18 +34,19 @@ bool relax(int& u, int t){
 	}
 	return false;
 }
-void bfs(int s){
+int bfs(int s){
 	memset(level, -1, sizeof(level));
 	queue<P> que;
+
 	que.push(P(s, 0));
 	level[ROW(s)][COL(s)] = 0;
+
 	while(!que.empty()){
 		P p = que.front(); que.pop();
 		int v = p.first, t = p.second;
 		int i = ROW(v), j = COL(v);
 		
-		if(i == 0) break;
-
+		if(i == 0) return v;
 
 		for(int k = 0; k < 4; k++){
 			int a = i + x[k], b = j + y[k];
@@ -64,21 +65,20 @@ void bfs(int s){
 	}	
 }
 void solve(){
-	int s;
-	for(int i = 0; i < R; i++){
-		cout<<d[i];
-		for(int j = 0; j < C; j++){
+	int s = -1;
+	for(int i = 0; i < R && s < 0; i++){
+		for(int j = 0; j < C && s < 0; j++){
 			if(d[i][j] == 'O') s = NUM(i, j);
 		}
-		printf("\n");
 	}
-	bfs(s);
+	int v = bfs(s);
 	for(int i = 0; i < R; i++){
 		for(int j = 0; j < C; j++){
 			printf("%2d ", level[i][j]);
 		}
 		printf("\n");
 	}
+	printf("%d\n", level[ROW(v)][COL(v)]);
 }
 int main(){
 	scanf("%d %d\n", &R, &C);
