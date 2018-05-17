@@ -20,10 +20,10 @@ void add_edge(int u, int v){
 }
 bool dfs(int v){
 	used[v] = true;
-	for(int i = 0; i < G[v].size(); i++){　　　//檢查跟v有暖昧關係的所有女生
+	for(int i = 0; i < G[v].size(); i++){　
 		int u = G[v][i], w = match[u];　　　
-		if(w < 0 || !used[w] && dfs(w)){　//如果她沒有男朋友，就送作堆
-			match[v] = u;　　　　　　//如果她有男朋有了，就幫她的男朋友找一個新的女朋友，然後再送作堆　　
+		if(w < 0 || !used[w] && dfs(w)){　
+			match[v] = u;　　　　　
 			match[u] = v;
 			return true;
 		}
@@ -34,10 +34,10 @@ int bipartite_matching(){
 	int res = 0;
 	memset(match, -1, sizeof(match));
 	for(int v = 0; v < V; v++){
-		if(match[v] < 0){	//如果有人還沒有女朋友...
+		if(match[v] < 0){	
 			memset(used, 0, sizeof(used));
-			if(dfs(v)){　　 //那就幫他找一個
-				res++;　//配對成功，配對數加一
+			if(dfs(v)){　
+				res++;
 			}
 		}
 	}
